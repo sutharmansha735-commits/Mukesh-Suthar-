@@ -8,8 +8,8 @@ st.set_page_config(page_title="Roast & Masti AI", page_icon="🔥", layout="cent
 st.title("🔥 Roast & Reason AI")
 st.write("Sawaal pooch, kaam ka jawaab bhi milega aur thodi beizzati bhi! 😉")
 
-# Direct Hardcoded API Key
-API_KEY = "AIzaSyCGMzQRMIrPIvsVo8Ly9H9pJUmH40zJhjM"
+# Direct Hardcoded API Key (Updated)
+API_KEY = "AQ.Ab8RN6LigEE-yp4i8o2Vg3QL5XD17ETTVVV-xhXsva0o7Hhcbw"
 
 # System Prompt (Masti + Roast + Real Answer)
 system_instruction = """
@@ -43,7 +43,7 @@ if prompt := st.chat_input("Apna sawaal poocho..."):
         with st.spinner("Dimaag chala raha hoon... (aur beizzati soch raha hoon)"):
             try:
                 response = client.models.generate_content(
-                    model="gemini-1.5-flash-latest",
+                    model="gemini-2.0-flash",
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
@@ -54,3 +54,4 @@ if prompt := st.chat_input("Apna sawaal poocho..."):
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
             except Exception as e:
                 st.error(f"Kuch error aaya: {e}")
+                
