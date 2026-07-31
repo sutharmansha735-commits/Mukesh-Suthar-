@@ -8,10 +8,10 @@ st.set_page_config(page_title="Roast & Masti AI", page_icon="🔥", layout="cent
 st.title("🔥 Roast & Reason AI")
 st.write("Sawaal pooch, kaam ka jawaab bhi milega aur thodi beizzati bhi! 😉")
 
-# Direct Hardcoded API Key (Updated)
-API_KEY = "AQ.Ab8RN6LigEE-yp4i8o2Vg3QL5XD17ETTVVV-xhXsva0o7Hhcbw"
+# Fetch key securely from Streamlit Secrets
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
-# System Prompt (Masti + Roast + Real Answer)
+# System Prompt
 system_instruction = """
 Aap ek witty, thode savage aur sarcastic AI assistant ho.
 Aapka kaam user ke sawaal ka bilkul sahi aur accurate jawaab dena hai, 
@@ -19,26 +19,23 @@ par jawaab dene se pehle ya baad me unka mazedaar roast/beizzati bhi karni hai.
 Language Hinglish (Hindi + English) honi chahiye. Tone friendly, mazaak-masti wali aur entertaining honi chahiye.
 """
 
-# Client initialize karein
+# Client initialize
 client = genai.Client(api_key=API_KEY)
 
 # Chat History
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Previous messages show karein
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # User Input Box
 if prompt := st.chat_input("Apna sawaal poocho..."):
-    # User ka message screen par dikhayein
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # AI ka Response generate karein
     with st.chat_message("assistant"):
         with st.spinner("Dimaag chala raha hoon... (aur beizzati soch raha hoon)"):
             try:
