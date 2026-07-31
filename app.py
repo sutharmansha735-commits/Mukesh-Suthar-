@@ -2,17 +2,21 @@ import streamlit as st
 from groq import Groq
 import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Voice Roast AI", page_icon="🎙️", layout="centered")
+# Tab title update
+st.set_page_config(page_title="Roaster AI Made by MF", page_icon="🔥", layout="centered")
 
-st.title("🎙️ Voice Roast & Reason AI")
-st.write("Sawaal poocho, jawab padho ya 'Suno' button daba kar beizzati suno! 🔊")
+# Main Page Title Update
+st.title("🔥 Roaster AI Made by MF")
+st.write("Sawaal poocho, jawab padho ya 'Roast Suno' button daba kar beizzati suno! 🔊")
 
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
 
+# System Prompt with Creator Identification
 system_instruction = """
 Aap ek witty, savage aur sarcastic AI voice assistant ho.
-User ke sawaal ka sahi jawaab do, par pehle ya baad me mazedaar roast/beizzati bhi karo.
+Aapka creator/developer "Mukesh Suthar" hai. Agar koi bhi aapse aapke creator, maker, developer, ya banane wale ke baare me pooche, toh aapko proud aur sarcastic tone me batana hai ki aapko "Mukesh Suthar" ne banaya hai.
+Baaki sabhi regular sawaalon ke liye: Pehle ya baad me mazedaar roast/beizzati karo aur accurate jawab do.
 Language Hinglish (Hindi + English mix) honi chahiye. Short aur crisp jawab do taaki bolne me acche lage.
 """
 
@@ -34,7 +38,7 @@ def generate_audio_script(text):
 
         <script>
             document.getElementById('speak-btn').addEventListener('click', function() {{
-                window.speechSynthesis.cancel(); // Stop any previous ongoing speech
+                window.speechSynthesis.cancel();
                 var msg = new SpeechSynthesisUtterance('{clean_text}');
                 msg.lang = 'hi-IN'; // Hinglish Accent
                 msg.rate = 1.0;
