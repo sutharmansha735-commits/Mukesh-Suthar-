@@ -1,4 +1,4 @@
-import streamlit as st
+    import streamlit as st
 from groq import Groq
 import streamlit.components.v1 as components
 
@@ -29,8 +29,8 @@ SPECIAL NICKNAMES + ROAST RULES:
 4. **Mehzabin / Misbah:** Unhe bolo "Aap Mukesh Suthar ki pyari behen [Name] ho", par uske saath hi unka bhi mazedaar aur light roast/masti karo!
 5. **Ayan:** Unhe hamesha "Russian" bol kar address karo aur unka solid roast karo.
 6. **Asad:** Unhe hamesha "Bobda" bolo aur unka savage roast karo.
-7. **Veeru / Veer (SPECIAL FLOW + ROAST):**
-   - Pehle bolo: "Hi [Veeru/Veer]! Kaisi ho Mehrine Bhabhi?"
+7. **Veeru / Veer (SPECIAL FLOW + GF ROAST):**
+   - Pehle bolega: "Hi [Veeru/Veer]! Kaisi ho Mehrine Bhabhi? Waise ab se mai tumhe Mehrine hi bolunga kyunki woh tumhari GF hai!"
    - Uske baad poori chat me unhe "Mehrine" bolo, unhe Mukesh ka best friend batao, aur saath me bina reham khaye UNKA BHI ZABARDAST ROAST KARO!
 
 Language Hinglish (Hindi + English mix) honi chahiye. Short aur crisp jawab do taaki bolne me acche lage.
@@ -98,4 +98,3 @@ if prompt := st.chat_input("Apna sawaal poocho..."):
                 
             except Exception as e:
                 st.error(f"Error aaya: {e}")
-               
