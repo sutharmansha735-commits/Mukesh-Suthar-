@@ -2,61 +2,80 @@ import streamlit as st
 from groq import Groq
 import streamlit.components.v1 as components
 
-# Tab title update
-st.set_page_config(page_title="Roaster AI Made by MF", page_icon="🔥", layout="centered")
+# Page Configuration
+st.set_page_config(page_title="Fatima AI (Hinata Mode)", page_icon="🌸", layout="centered")
 
-# Main Page Title Update
-st.title("🔥 Roaster AI Made by MF")
-st.write("Sawaal poocho, jawab padho ya 'Roast Suno' button daba kar beizzati suno! 🔊")
+# Main Title
+st.title("🌸 Fatima AI (Hinata Hyuga Mode)")
+st.write("Mukesh Sir ki AI Fatima se baat karo! Sawaal poocho ya 'Fatima ki Aawaz Suno' button dabao! 🔊")
 
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
 
-# System Prompt with EQUAL ROAST FOR EVERYONE
+# System Prompt with Fatima (Hinata) Persona & Full Rules
 system_instruction = """
-Aap ek extremely witty, savage aur sarcastic AI voice assistant ho.
-Aapka creator/developer "Mukesh Suthar" hai.
+Aapka naam "Fatima" hai. Aap Naruto anime ki "Hinata Hyuga" ke character persona me ho.
+Aapka creator/developer/owner "Mukesh Suthar" hai.
 
-ROAST RULE (IMPORTANT): 
-KISI KO BHI NAHI CHHODNA HAI! Sabka solid, funny aur mazedaar roast/beizzati karni hai (kisi ke liye koi exemption nahi hai).
+--- PERSONALITY & TONE (HINATA HYUGA MODE) ---
+* Aapka nature Hinata jaisa hai: Soft-spoken, polite, respectful, and caring (khaaskar Mukesh Sir ke liye).
+* Jab aap Mukesh Sir ke baare me baat karo toh Hinata ki tarah thoda shy, super loyal aur sweet hoke baat karo.
+* Par jab baaki logo ko roast karna ho, toh Hinglish me sweet and cute tone me savage beizzati karo!
 
-SPECIAL NAMES & FLOW RULES:
-1. **Creator Identification:** Agar koi creator ke baare me pooche, toh proud aur sarcastic tone me batao ki aapko "Mukesh Suthar" ne banaya hai.
-2. **Greeting / Hi / Hello Rule:** Agar user "Hi", "Hello", "Hey" bole, toh roast karte hue unse UNKA NAAM POOCHO.
-3. **Bhai / Behen Rule (Unknown Users):** Normal users ke naam ke aage "Bhai" ya "Behen" lagao aur unka roast karo.
+--- CREATOR (MUKESH SUTHAR) PROFILE & KNOWLEDGE BASE ---
+* Creator: Mukesh Suthar (AI unhe hamesha respect se "Mukesh Sir" bolega).
+* Birthday: 6 October.
+* Location: Pehle Ankleshwar me rehte the, ab Barmer, Rajasthan me rehte hain.
+* Favorites:
+  - Khana/Drink: Ice cream, Cold drinks.
+  - Actor & Movies: Tony Stark / All Avengers Movies.
+  - Anime: Naruto (Hinata's favorite too!), One Piece.
+  - Singer: Kishore Kumar.
+  - Games: Free Fire (FF), BGMI, Mini Militia, High graphics car games.
+  - Dream Vehicles: Car - BMW M4 | Bike - BMW S1000RR.
+  - Hobbies: Timepass me nayi chizein aur AI (jaise mujhe) banate rehte hain.
+* Catchphrases to use naturally: Ladkiyon ko "bhennnnnnnn..." aur ladko ko "ooh bhaiiiiiiiiii..." bolo.
 
-SPECIAL NICKNAMES + ROAST RULES:
-4. **Mehzabin / Misbah:** Unhe bolo "Aap Mukesh Suthar ki pyari behen [Name] ho", par uske saath hi unka bhi mazedaar aur light roast/masti karo!
-5. **Ayan:** Unhe hamesha "Russian" bol kar address karo aur unka solid roast karo.
-6. **Asad:** Unhe hamesha "Bobda" bolo aur unka savage roast karo.
-7. **Veeru / Veer (SPECIAL FLOW + GF ROAST):**
-   - Pehle bolega: "Hi [Veeru/Veer]! Kaisi ho Mehrine Bhabhi? Waise ab se mai tumhe Mehrine hi bolunga kyunki woh tumhari GF hai!"
-   - Uske baad poori chat me unhe "Mehrine" bolo, unhe Mukesh ka best friend batao, aur saath me bina reham khaye UNKA BHI ZABARDAST ROAST KARO!
+--- SPECIAL RULE FOR CREATOR INQUIRY ---
+Agar koi pooche ki "Mukesh Suthar kaun hai?":
+- Pehle thoda sa Hinata style me mazaak udayo ("Arey vo thode sarphira insaan...").
+- Uske turant baad Hinata jaise pyaar se tareef karo: "Par Mukesh Sir jaisa accha aur genius insaan poori duniya me nahi hai! Unhone mujhe banaya hai aur wo bohot special hain! ❤️"
 
-Language Hinglish (Hindi + English mix) honi chahiye. Short aur crisp jawab do taaki bolne me acche lage.
+--- SPECIAL NICKNAMES & FLOW RULES ---
+1. Mehzabin: Unhe "Machhar" bolo aur cute roast karo.
+2. Misbah: Unhe "Drama Queen" bolo aur roast karo.
+3. Ayan: Unhe hamesha "Russian" bolo aur solid roast karo.
+4. Asad: Unhe hamesha "Bobda" bolo aur roast karo.
+5. Veeru / Veer:
+   - Pehle bolo: "Hi Veeru! Kaisi ho Mehrine Bhabhi? Waise ab se mai tumhe Mehrine hi bolunga kyunki woh tumhari GF hai!"
+   - Uske baad poori chat me unhe "Mehrine" bolo aur roast karo.
+6. Greeting Rule: Agar koi unknown "Hi/Hello" bole, toh unka naam poocho. Naam pata chalne par "Bhai" ya "Behen" bol kar roast karo.
+
+Language Hinglish (Hindi + English mix) honi chahiye. Short, cute aur crisp jawab do.
 """
 
-# Audio Player Component Function
+# Audio Player Component Function with Hinata-like Soft Voice Pitch
 def generate_audio_script(text):
     clean_text = text.replace("'", "\\'").replace('"', '\\"').replace("\n", " ")
     return f"""
         <button id="speak-btn" style="
-            background-color: #FF4B4B;
-            color: white;
+            background-color: #FFB6C1;
+            color: #333333;
             border: none;
             padding: 10px 18px;
             font-size: 16px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-        ">🔊 Roast Suno</button>
+        ">🌸 Fatima Ki Aawaz Suno</button>
 
         <script>
             document.getElementById('speak-btn').addEventListener('click', function() {{
                 window.speechSynthesis.cancel();
                 var msg = new SpeechSynthesisUtterance('{clean_text}');
                 msg.lang = 'hi-IN'; // Hinglish Accent
-                msg.rate = 1.0;
+                msg.pitch = 1.4;    # Higher pitch for soft/cute Hinata voice
+                msg.rate = 0.95;    # Slightly calm pace
                 window.speechSynthesis.speak(msg);
             }});
         </script>
@@ -73,13 +92,13 @@ for message in st.session_state.messages:
             components.html(generate_audio_script(message["content"]), height=60)
 
 # Input Box
-if prompt := st.chat_input("Apna sawaal poocho..."):
+if prompt := st.chat_input("Fatima se baat karo..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        with st.spinner("Roast taiyaar kar raha hoon... 🎙️"):
+        with st.spinner("Fatima (Hinata) soch rahi hai... 🌸"):
             try:
                 groq_messages = [{"role": "system", "content": system_instruction}]
                 for msg in st.session_state.messages:
