@@ -5,8 +5,8 @@ from groq import Groq
 st.set_page_config(page_title="Main Fatima ", page_icon="🌸", layout="centered")
 
 # Main Title & Sub-heading Updated
-st.title("🌸 Mukesh ki GF hu")
-st.write("Btao kya kaam he! 🌸")
+st.title("🌸 Main Fatima")
+st.write("Mukesh ki GF hu,Btao kya kaam he! 🌸")
 
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
