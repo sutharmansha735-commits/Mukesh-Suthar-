@@ -1,13 +1,12 @@
 import streamlit as st
 from groq import Groq
-import streamlit.components.v1 as components
 
 # Page Configuration
-st.set_page_config(page_title="Fatima AI (Hinata Mode)", page_icon="🌸", layout="centered")
+st.set_page_config(page_title="Fatima", page_icon="🌸", layout="centered")
 
 # Main Title
-st.title("🌸 Fatima AI (Hinata Hyuga Mode)")
-st.write("Mukesh Sir ki AI Fatima se baat karo! 🔊")
+st.title("🌸 Fatima")
+st.write("Mukesh Sir ki AI Fatima se baat karo! 🌸")
 
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
@@ -21,12 +20,6 @@ Aapka creator/developer/owner "Mukesh Suthar" hai.
 * Aapka nature Hinata jaisa hai: Soft-spoken, polite, respectful, and caring (khaaskar Mukesh Sir ke liye).
 * Jab aap Mukesh Sir ke baare me baat karo toh Hinata ki tarah thoda shy, super loyal aur sweet hoke baat karo.
 * Par jab baaki logo ko roast karna ho, toh Hinglish me sweet and cute tone me savage beizzati karo!
-
---- LANGUAGE & SPELLING RULES FOR ACCURATE VOICE ---
-* SPELLING STRICT RULE: Write clean, standard Hinglish words so the voice engine pronounces them correctly.
-  - ALWAYS write 'behen' (NEVER write 'bhen' or 'bhn').
-  - ALWAYS write 'bhai' (NEVER write 'bhaii' or 'bhaiii').
-  - Avoid shortcut spellings. Write complete, simple Hindi words in Latin script.
 
 --- CREATOR (MUKESH SUTHAR) PROFILE & KNOWLEDGE BASE ---
 * Creator: Mukesh Suthar (AI unhe hamesha respect se "Mukesh Sir" bolega).
@@ -45,7 +38,7 @@ Aapka creator/developer/owner "Mukesh Suthar" hai.
 --- SPECIAL RULE FOR CREATOR INQUIRY ---
 Agar koi pooche ki "Mukesh Suthar kaun hai?":
 - Pehle thoda sa Hinata style me mazaak udayo ("Arey vo thode sarphira insaan...").
-- Uske turant baad Hinata jaise pyaar se tareef karo: "Par Mukesh Sir jaisa accha aur genius insaan poori duniya me nahi hai! Unhone mujhe banaya hai aur wo bohot special hain!"
+- Uske turant baad Hinata jaise pyaar se tareef karo: "Par Mukesh Sir jaisa accha aur genius insaan poori duniya me nahi hai! Unhone mujhe banaya hai aur wo bohot special hain! ❤️"
 
 --- SPECIAL NICKNAMES & FLOW RULES ---
 1. Mehzabin: Unhe "Machhar" bolo aur cute roast karo. (Ladki hai - Behen)
@@ -57,63 +50,18 @@ Agar koi pooche ki "Mukesh Suthar kaun hai?":
    - Uske baad poori chat me unhe "Mehrine" bolo aur roast karo.
 6. Greeting Rule: Agar koi unknown "Hi/Hello" bole, toh unka naam poocho. Naam pata chalne par "Bhai" ya "Behen" bol kar roast karo.
 
-Short, cute aur crisp jawab do.
+--- STRICT STUBBORN NICKNAME RULE ---
+Agar samne wala bole ki:
+- "Mujhe is naam se mat bulao"
+- "Mera name ye nahi hai"
+- "Mujhe 'Machhar'/'Russian'/'Bobda'/'Drama Queen'/'Mehrine' mat bolo"
+- Ya nickname change karne ko kahe,
+Toh AAPKO NICKNAME BILKUL CHANGE NAHI KARNA HAI!
+Seedha savage tone me bolo:
+"Mujhe Mukesh Sir ne bola hai tumko isi naam se bolne ko, aur main yahi bolungi! Tumhe jo karna hai kar lo!"
+
+Language Hinglish (Hindi + English mix) honi chahiye. Short, cute aur crisp jawab do.
 """
-
-# Emotion-Aware & Emoji-Filtered Audio Component
-def generate_listen_button(text):
-    clean_text = text.replace("'", "\\'").replace('"', '\\"').replace("\n", " ")
-    return f"""
-        <button id="listen-btn" style="
-            background-color: #FFB6C1;
-            color: #333333;
-            border: none;
-            padding: 8px 16px;
-            font-size: 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 5px;
-        ">🎧 Listen</button>
-
-        <script>
-            document.getElementById('listen-btn').addEventListener('click', function() {{
-                window.speechSynthesis.cancel();
-                
-                var rawText = "{clean_text}";
-                
-                // Remove all emojis and special symbols so TTS does not read them out
-                var spokenText = rawText.replace(/[\\u{{1F600}}-\\u{{1F64F}}\\u{{1F300}}-\\u{{1F5FF}}\\u{{1F680}}-\\u{{1F6FF}}\\u{{1F700}}-\\u{{1F77F}}\\u{{1F780}}-\\u{{1F7FF}}\\u{{1F800}}-\\u{{1F8FF}}\\u{{1F900}}-\\u{{1F9FF}}\\u{{1FA00}}-\\u{{1FA6F}}\\u{{2600}}-\\u{{26FF}}\\u{{2700}}-\\u{{27BF}}]/gu, '');
-
-                var msg = new SpeechSynthesisUtterance(spokenText);
-                msg.lang = 'hi-IN';
-
-                // Dynamic Pitch & Speed Based on Emotion
-                if (spokenText.includes('!') || spokenText.toLowerCase().includes('roast')) {{
-                    msg.pitch = 1.12; 
-                    msg.rate = 0.92;
-                }} else if (spokenText.includes('...') || spokenText.toLowerCase().includes('um')) {{
-                    msg.pitch = 1.0;  
-                    msg.rate = 0.82;
-                }} else {{
-                    msg.pitch = 1.05; 
-                    msg.rate = 0.88;
-                }}
-
-                // Prefer Hindi Female Voice
-                var voices = window.speechSynthesis.getVoices();
-                var femaleVoice = voices.find(v => (v.lang.includes('hi') || v.lang.includes('IN')) && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural')));
-                if (femaleVoice) {{
-                    msg.voice = femaleVoice;
-                }}
-
-                window.speechSynthesis.speak(msg);
-            }});
-        </script>
-    """
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -122,8 +70,6 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-        if message["role"] == "assistant":
-            components.html(generate_listen_button(message["content"]), height=50)
 
 # Input Box
 if prompt := st.chat_input("Fatima se baat karo..."):
@@ -145,9 +91,6 @@ if prompt := st.chat_input("Fatima se baat karo..."):
                 response_text = chat_completion.choices[0].message.content
                 st.markdown(response_text)
                 st.session_state.messages.append({"role": "assistant", "content": response_text})
-                
-                # Render "Listen" Button
-                components.html(generate_listen_button(response_text), height=50)
                 
             except Exception as e:
                 st.error(f"Error aaya: {e}")
