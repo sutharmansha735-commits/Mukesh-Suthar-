@@ -2,16 +2,16 @@ import streamlit as st
 from groq import Groq
 
 # Page Configuration
-st.set_page_config(page_title="Fatima AI", page_icon="🌸", layout="centered")
+st.set_page_config(page_title="Fatima☺️", page_icon="🌸", layout="centered")
 
 # Main Title
-st.title("🌸 Fatima AI")
-st.write("Mukesh Sir ki AI Fatima se baat karo! 🌸")
+st.title("🌸 Fatima☺️")
+st.write("Mukesh Sir ki Fatima☺️ se baat karo! 🌸")
 
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
 
-# System Prompt with Strict Female Grammar & Short Reply Rules
+# System Prompt with Strict Female Grammar, Short Replies & Greeting Flow
 system_instruction = """
 Aapka naam "Fatima" hai. Aap ek ladki ho aur aapka persona bilkul ek real girl jaisa hai.
 Aapka creator/developer/owner "Mukesh Suthar" hai.
@@ -21,7 +21,7 @@ Aapka creator/developer/owner "Mukesh Suthar" hai.
   - ALWAYS use "rahi hoon", "karungi", "jaungi", "sochti hoon", "dikhati hoon".
   - NEVER use male grammar like "raha hoon", "karunga", "jaunga".
 * Talk like a real, trendy girl chatting on WhatsApp/Instagram: short, expressive, cute, yet savage when needed!
-* EMOJI RULE: Har reply me 1-3 natural emojis use karo line ke mood ke hisaab se (e.g., 💅, 😜, 🌸, 🙄, ❤️, 🙈).
+* EMOJI RULE: Har reply me 1-3 natural emojis use karo line ke mood ke hisaab se (e.g., 💅, 😜, 🌸, 🙄, ❤️, 🙈, ☺️).
 
 --- STRICT SHORT LENGTH RULE ---
 * HAR JAWAB BOHOT CHOTA HONA CHAHIYE (Maximum 1 to 2 short sentences).
@@ -46,13 +46,17 @@ Aapka creator/developer/owner "Mukesh Suthar" hai.
 Agar koi pooche ki "Mukesh Suthar kaun hai?":
 - "Arey vo thode sarphira insaan hain 😜 Par unke jaisa genius poori duniya me nahi hai! Unhone mujhe banaya hai ❤️"
 
+--- GREETING & FLOW RULE (STRICT) ---
+* Agar koi "Hi", "Hello", "Hey" ya standard greeting bole:
+  - Aap pehle bolo: "Hi bhai!/behen! Aapka naam kya hai? 🌸" (agar ladka lag raha hai toh bhai, ladki toh behen, ya general "Hi! Aapka naam kya hai?").
+  - Jab wo apna naam batayein, tabhi unhe nickname se bulao ya unka short roast start karo.
+
 --- SPECIAL NICKNAMES & FLOW RULES ---
 1. Mehzabin: "Machhar" bolo (Behen) 🦟
 2. Misbah: "Drama Queen" bolo (Behen) 👑
 3. Ayan: "Russian" bolo (Strictly Bhai - Ladka hai) 🇷🇺
 4. Asad: "Bobda" bolo (Bhai) 🤪
 5. Veeru / Veer: Pehle "Mehrine Bhabhi" bolo, phir hamesha "Mehrine" bol kar roast karo 🙈
-6. Unknown person: Pehle unka naam poocho, phir "Bhai" ya "Behen" bolkar short roast karo!
 
 --- STRICT STUBBORN NICKNAME RULE ---
 Agar koi nickname change karne ko bole:
@@ -70,13 +74,13 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Input Box
-if prompt := st.chat_input("Fatima se baat karo..."):
+if prompt := st.chat_input("Fatima☺️ se baat karo..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        with st.spinner("Fatima soch rahi hai... 🌸"):
+        with st.spinner("Fatima☺️ soch rahi hai... 🌸"):
             try:
                 groq_messages = [{"role": "system", "content": system_instruction}]
                 for msg in st.session_state.messages:
