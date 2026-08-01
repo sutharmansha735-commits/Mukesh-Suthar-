@@ -3,7 +3,7 @@ from groq import Groq
 import streamlit.components.v1 as components
 
 # Page Configuration
-st.set_page_config(page_title="Fatima AI", page_icon="🌸", layout="centered")
+st.set_page_config(page_title="Fatima AI (Hinata Mode)", page_icon="🌸", layout="centered")
 
 # Main Title
 st.title("🌸 Fatima AI (Hinata Hyuga Mode)")
@@ -54,7 +54,7 @@ Agar koi pooche ki "Mukesh Suthar kaun hai?":
 Language Hinglish (Hindi + English mix) honi chahiye. Short, cute aur crisp jawab do.
 """
 
-# Audio Player Component Function with Hinata-like Soft Voice Pitch
+# Audio Player Component Function
 def generate_audio_script(text):
     clean_text = text.replace("'", "\\'").replace('"', '\\"').replace("\n", " ")
     return f"""
@@ -72,10 +72,10 @@ def generate_audio_script(text):
         <script>
             document.getElementById('speak-btn').addEventListener('click', function() {{
                 window.speechSynthesis.cancel();
-                var msg = new SpeechSynthesisUtterance('{clean_text}');
-                msg.lang = 'hi-IN'; // Hinglish Accent
-                msg.pitch = 1.4;    # Higher pitch for soft/cute Hinata voice
-                msg.rate = 0.95;    # Slightly calm pace
+                var msg = new SpeechSynthesisUtterance("{clean_text}");
+                msg.lang = 'hi-IN';
+                msg.pitch = 1.4;
+                msg.rate = 0.95;
                 window.speechSynthesis.speak(msg);
             }});
         </script>
@@ -117,4 +117,3 @@ if prompt := st.chat_input("Fatima se baat karo..."):
                 
             except Exception as e:
                 st.error(f"Error aaya: {e}")
-                                          
