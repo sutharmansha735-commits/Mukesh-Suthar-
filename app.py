@@ -2,10 +2,10 @@ import streamlit as st
 from groq import Groq
 
 # Page Configuration
-st.set_page_config(page_title="Main Mukesh ki GF Fatima hu", page_icon="🌸", layout="centered")
+st.set_page_config(page_title="Main Fatima ", page_icon="🌸", layout="centered")
 
 # Main Title & Sub-heading Updated
-st.title("🌸 Main Mukesh ki GF Fatima hu")
+st.title("🌸 Mukesh ki GF hu")
 st.write("Btao kya kaam he! 🌸")
 
 GROQ_API_KEY = "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"
@@ -80,7 +80,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Input Box
-if prompt := st.chat_input("Main Mukesh ki GF Fatima hu, Btao kya kaam he..."):
+if prompt := st.chat_input("Btao kya kaam he..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
