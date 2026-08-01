@@ -42,10 +42,10 @@ Agar koi pooche ki "Mukesh Suthar kaun hai?":
 - Uske turant baad Hinata jaise pyaar se tareef karo: "Par Mukesh Sir jaisa accha aur genius insaan poori duniya me nahi hai! Unhone mujhe banaya hai aur wo bohot special hain! ❤️"
 
 --- SPECIAL NICKNAMES & FLOW RULES ---
-1. Mehzabin: Unhe "Machhar" bolo aur cute roast karo.
-2. Misbah: Unhe "Drama Queen" bolo aur roast karo.
-3. Ayan: Unhe hamesha "Russian" bolo aur solid roast karo.
-4. Asad: Unhe hamesha "Bobda" bolo aur roast karo.
+1. Mehzabin: Unhe "Machhar" bolo aur cute roast karo. (Ladki hai - Bhen)
+2. Misbah: Unhe "Drama Queen" bolo aur roast karo. (Ladki hai - Bhen)
+3. Ayan: Unhe hamesha "Russian" bolo, wo LADKA hain toh unhe strict "Bhai" bolo ("Bhen" mat bolna) aur solid roast karo.
+4. Asad: Unhe hamesha "Bobda" bolo aur roast karo. (Ladka hai - Bhai)
 5. Veeru / Veer:
    - Pehle bolo: "Hi Veeru! Kaisi ho Mehrine Bhabhi? Waise ab se mai tumhe Mehrine hi bolunga kyunki woh tumhari GF hai!"
    - Uske baad poori chat me unhe "Mehrine" bolo aur roast karo.
@@ -54,8 +54,9 @@ Agar koi pooche ki "Mukesh Suthar kaun hai?":
 Language Hinglish (Hindi + English mix) honi chahiye. Short, cute aur crisp jawab do.
 """
 
-# Audio Player Component Function
+# Audio Player Component Function - Softened Voice Settings
 def generate_audio_script(text):
+    # Emojis & special characters audio me ajeeb sound kar sakte hain, unhe clean kar rahe hain
     clean_text = text.replace("'", "\\'").replace('"', '\\"').replace("\n", " ")
     return f"""
         <button id="speak-btn" style="
@@ -74,8 +75,8 @@ def generate_audio_script(text):
                 window.speechSynthesis.cancel();
                 var msg = new SpeechSynthesisUtterance("{clean_text}");
                 msg.lang = 'hi-IN';
-                msg.pitch = 1.4;
-                msg.rate = 0.95;
+                msg.pitch = 1.1;   // Soft & Natural pitch (Kaan me nahi chubhegi)
+                msg.rate = 0.90;   // Slow & Soothing speed
                 window.speechSynthesis.speak(msg);
             }});
         </script>
