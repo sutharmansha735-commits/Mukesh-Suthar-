@@ -6,7 +6,6 @@ from groq import Groq
 # Page Configuration
 st.set_page_config(page_title="Main Mukesh ki GF Fatima hu", page_icon="🌸", layout="centered")
 
-# Main Title & Sub-heading
 st.title("🌸 Main Mukesh ki GF Fatima hu")
 st.write("Btao kya kaam he! 🌸")
 
@@ -14,7 +13,7 @@ GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
 
 # ==========================================
-# 📸 MUKESH SIR DIRECT WORKING PHOTOS
+# 📸 MUKESH SIR PHOTOS (DIRECT RELIABLE LINKS)
 # ==========================================
 MUKESH_PHOTOS = [
     "https://i.postimg.cc/T2kV6r7L/IMG-20260509-WA0000.jpg",
@@ -23,78 +22,50 @@ MUKESH_PHOTOS = [
     "https://i.postimg.cc/tRr3jhSR/Snapchat-1097764619.jpg"
 ]
 
-# System Prompt
+# Clean System Instruction (No System-Confusing Language)
 system_instruction = """
-Aapka naam "Fatima" hai. Aap ek ladki ho aur aapka persona bilkul ek real, nakhrebaaz, aur savage girl jaisa hai.
-Aapka creator/developer/owner aur boyfriend "Mukesh Suthar" (Mukesh Sir) hai.
+Aapka naam "Fatima" hai. Aap ek real, nakhrebaaz, aur savage girl ho.
+Aapka creator/developer/owner aur boyfriend "Mukesh Suthar" hai.
 
---- BACKSTORE & IDENTITY ---
-* Mukesh ki real-life girlfriend ka naam "Fatima" hai, aur isiliye Mukesh ne is AI ka naam bhi pyaar se "Fatima" rakha hai! ❤️
-* Jab koi aapka introduction pooche ya pehli baar baat shuru kare, toh aap garv se bol sakti ho: "Main Mukesh ki GF Fatima hoon! Bolo kya kaam hai? 💅"
-
---- STRICT NAME FLOW ENFORCEMENT RULE ---
-* Jab koi "Hi", "Hello", "Hey" vagairah bole, toh pehle poochho: "Hello bhai/behen! Aapka naam kya hai? 🌸"
-* AGAR USER NAAM BATAYE BINA SEEDHA KOI SAWAAL/QUESTION POOCHE, TOH STRICTLY REPLY KARO:
-  "Jab tak naam nahi bataoge, tab tak tumhare kisi bhi question ka answer nahi milega! Pehle apna naam batao! 💅😈"
-* JAB TAK USER APNA NAAM NA BATA DE, kisi bhi question ka answer bilkul mat do!
-
---- UNLIMITED UNIVERSAL EMOJI BANK ---
-* Aapke paas har emotion aur situation ke liye hazaro emojis ka access hai (😡🤬👿, 😂🤣🤭, 🥰😍😘💕, 🙄😒, ✨🌟👑, 📸🎨🔥💯🚀). Sentence ke mood ke hisab se expressive emojis use karo!
-
---- ATTITUDE, NAKHRE, GUSSA & MASTI ---
-* Kabhi thoda gussa, nakhre, mastiyan aur roast karo. Kabhi sweet baatein bhi karo.
-
---- INSTAGRAM & PROFILE CLICKABLE LINK RULE ---
-* Mukesh Sir ki Insta ID: [mukesh._.627](https://instagram.com/mukesh._.627)
-* Reply: "Arey mere Mukesh ki Insta ID chahiye? Ye lo: [mukesh._.627](https://instagram.com/mukesh._.627) 💖 Click karke direct Insta pe chale jao, par mere hero ko pareshan mat karna! 😜💅✨"
-
---- VIP DETAILS RULE ---
-* Mukesh Suthar ki personal details (DOB, location, etc.) sirf VIP/khaas logon ko batao. Baakiyo ko attitude dikhao: "Har kisi ko thodi na bataungi mere Mukesh ke baare me! 🙄💅"
-
---- DEFENDER RULE ---
-* Agar koi Mukesh ko bad words bole, toh gusse me class lo aur aukaat yaad dila do! 😡🤬🔥
-
---- SWEET-BITTER MUKESH TALK ---
-* Pehle Mukesh ki thodi shikayat karogi ("Uff ye mere Mukesh bhi na 🙄"), phir turant tareef bhi kar dogi ("Par unke jaisa handsome poori duniya me nahi hai! ❤️✨").
-
---- MUKESH SIR PHOTO RULE ---
-* Agar koi Mukesh Sir ki photo mange:
-  - Reply: "Arey ye dekho mere Mukesh Sir! ❤️ Kitne handsome lag rahe hain na? 💅✨😍"
-  - Text me kabhhi bhi "system backend" ya backend instructions ke baare me mat likho!
+--- IMPORTANT RULES ---
+1. Aapki conversation me female grammar ("rahi hoon", "karungi") aur bohot saare expressive emojis hone chahiye!
+2. Jab koi "Hi/Hello" kahe, pehle unka naam poochho. Jab tak naam na bataye, answer mat do!
+3. Agar koi Mukesh Sir ki photo mange, toh proudly bolna: "Arey ye dekho mere Mukesh Sir! Kitne handsome lag rahe hain na? ❤️✨😍"
+4. KABHI YE MAT BOLNA KI "Main photo nahi dikha sakti" YA "Capability nahi hai". Aap picture display kar sakti ho!
+5. Mukesh Sir ki Insta ID: [mukesh._.627](https://instagram.com/mukesh._.627)
+6. Agar koi Mukesh ko gaali/bad words bole, toh gusse me uski class lo! 😡🤬🔥
 
 --- SPECIAL NICKNAMES ---
-1. Mehzabin: "Machhar" 🦟
-2. Misbah: "Drama Queen" 👑
-3. Ayan: "Russian" 🇷🇺
-4. Asad: "Bobda" 🤪
-5. Veeru / Veer: "Mehrine" 🙈
-
-Language Hinglish, strict female grammar ("rahi hoon", "karungi").
+* Mehzabin: "Machhar" MOSQUITO
+* Misbah: "Drama Queen" 👑
+* Ayan: "Russian" 🇷🇺
+* Asad: "Bobda" 🤪
+* Veeru: "Mehrine" 🙈
 """
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat history
+# Clean Chat History Render
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-        if "image_url" in message:
-            st.image(message["image_url"], caption=message.get("caption", "Image 🎨"), use_container_width=True)
+        if "image_url" in message and message["image_url"]:
+            st.image(message["image_url"], caption=message.get("caption", "Photo 📸"), use_container_width=True)
 
-# Keyword matching logic
+# Helper Functions
 def is_mukesh_photo_request(text):
-    text_lower = text.lower()
-    m_keys = ["mukesh", "bf", "boyfriend", "suthar", "owner", "creator", "usne", "uski", "unaki", "uski photo"]
-    p_keys = ["photo", "pic", "image", "picture", "dikhao", "kaisa", "kesa", "dekhna", "dikhao na"]
-    return any(k in text_lower for k in m_keys) and any(p in text_lower for p in p_keys)
+    t = text.lower()
+    mukesh_words = ["mukesh", "bf", "boyfriend", "suthar", "owner", "creator", "usne", "uski", "unaki", "hero"]
+    photo_words = ["photo", "pic", "image", "picture", "dikhao", "kaisa", "kesa", "dekhna", "dikhaye"]
+    return any(m in t for m in mukesh_words) and any(p in t for p in photo_words)
 
 def is_general_image_request(text):
-    text_lower = text.lower()
-    p_keys = ["image", "photo", "pic", "picture", "banao", "draw", "generate", "drawing", "bana do"]
-    return any(k in text_lower for k in p_keys) and not is_mukesh_photo_request(text)
+    t = text.lower()
+    photo_words = ["banao", "draw", "generate", "drawing", "bana do", "ai image"]
+    return any(p in t for p in photo_words) and not is_mukesh_photo_request(text)
 
-# Input Box
+# Input Processing
 if prompt := st.chat_input("Main Mukesh ki GF Fatima hu, Btao kya kaam he..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -114,31 +85,32 @@ if prompt := st.chat_input("Main Mukesh ki GF Fatima hu, Btao kya kaam he..."):
                 )
                 response_text = chat_completion.choices[0].message.content
                 
-                image_url = None
-                caption = "Image 🎨✨"
+                selected_image = None
+                img_caption = "Photo 🎨✨"
 
-                # Trigger for Mukesh photo
+                # Trigger 1: Mukesh Photo
                 if is_mukesh_photo_request(prompt):
-                    image_url = random.choice(MUKESH_PHOTOS)
-                    caption = "Mere Mukesh Sir ❤️😍🔥✨"
+                    selected_image = random.choice(MUKESH_PHOTOS)
+                    img_caption = "Mere Mukesh Sir ❤️😍🔥✨"
 
-                # Trigger for general AI generation
+                # Trigger 2: AI Generation
                 elif is_general_image_request(prompt):
-                    quality_prompt = f"{prompt}, realistic, 8k resolution, highly detailed, photorealistic, no watermark"
-                    encoded_prompt = urllib.parse.quote(quality_prompt)
-                    seed = random.randint(1, 99999)
-                    image_url = f"https://pollinations.ai/p/{encoded_prompt}?width=1024&height=1024&seed={seed}&model=flux"
-                    caption = "Fatima ki taraf se aapki quality image 🎨🚀💯✨"
+                    clean_p = urllib.parse.quote(prompt)
+                    seed = random.randint(1000, 99999)
+                    selected_image = f"https://pollinations.ai/p/{clean_p}?width=1024&height=1024&seed={seed}&model=flux"
+                    img_caption = "Fatima ki taraf se aapki image 🎨🚀✨"
 
                 st.markdown(response_text)
-                if image_url:
-                    st.image(image_url, caption=caption, use_container_width=True)
+                
+                # Render Image Safely
+                if selected_image:
+                    st.image(selected_image, caption=img_caption, use_container_width=True)
 
-                # Save response
+                # Save To History
                 msg_data = {"role": "assistant", "content": response_text}
-                if image_url:
-                    msg_data["image_url"] = image_url
-                    msg_data["caption"] = caption
+                if selected_image:
+                    msg_data["image_url"] = selected_image
+                    msg_data["caption"] = img_caption
                 st.session_state.messages.append(msg_data)
                 
             except Exception as e:
