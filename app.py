@@ -132,31 +132,25 @@ if prompt := st.chat_input("Main Mukesh ki GF Fatima hu, Batao kya kaam hai...")
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        try:
-            recent_messages = st.session_state.messages[-8:]
-            groq_messages = [{"role": "system", "content": system_instruction}]
-            
-            for msg in recent_messages:
-                groq_messages.append({"role": msg["role"], "content": msg["content"]})
+        with st.spinner("Fatima type kar rahi hai... 🌸💅✨"):
+            try:
+                # Keep last 4 messages to maximize speed
+                recent_messages = st.session_state.messages[-4:]
+                groq_messages = [{"role": "system", "content": system_instruction}]
+                
+                for msg in recent_messages:
+                    groq_messages.append({"role": msg["role"], "content": msg["content"]})
 
-            # Stream=True for fast live typing effect
-            stream_completion = client.chat.completions.create(
-                messages=groq_messages,
-                model="llama-3.1-8b-instant",
-                max_tokens=1500,
-                stream=True
-            )
-            
-            # Helper generator to yield text chunks instantly
-            def generate_chunks():
-                for chunk in stream_completion:
-                    if chunk.choices[0].delta.content:
-                        yield chunk.choices[0].delta.content
+                # Instant response generation using llama-3.1-8b-instant
+                chat_completion = client.chat.completions.create(
+                    messages=groq_messages,
+                    model="llama-3.1-8b-instant",
+                    max_tokens=1000
+                )
+                response_text = chat_completion.choices[0].message.content
 
-            # Live Fast Streaming Response
-            response_text = st.write_stream(generate_chunks())
-
-            st.session_state.messages.append({"role": "assistant", "content": response_text})
-            
-        except Exception as e:
-            st.error(f"Error aaya: {e} 😭💔")
+                st.markdown(response_text)
+                st.session_state.messages.append({"role": "assistant", "content": response_text})
+                
+            except Exception as e:
+                st.error(f"Error aaya: {e} 😭💔")
