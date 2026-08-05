@@ -134,14 +134,12 @@ if prompt := st.chat_input("Main Mukesh ki GF Fatima hu, Batao kya kaam hai...")
     with st.chat_message("assistant"):
         with st.spinner("Fatima type kar rahi hai... 🌸💅✨"):
             try:
-                # Keep last 4 messages to maximize speed
                 recent_messages = st.session_state.messages[-4:]
                 groq_messages = [{"role": "system", "content": system_instruction}]
                 
                 for msg in recent_messages:
                     groq_messages.append({"role": msg["role"], "content": msg["content"]})
 
-                # Instant response generation using llama-3.1-8b-instant
                 chat_completion = client.chat.completions.create(
                     messages=groq_messages,
                     model="llama-3.1-8b-instant",
